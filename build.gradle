@@ -6,8 +6,19 @@
  */
 plugins {
     id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'application'
 }
 apply plugin: 'java'
+
+compileJava {
+    options.release = 16
+}
+
+mainClassName = 'hexlet.code.App'
+
+jar {
+    manifest.attributes("Main-Class": 'hexlet.code.App')
+}
 
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
