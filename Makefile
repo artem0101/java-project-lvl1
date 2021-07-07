@@ -6,3 +6,9 @@ run-dist:
 
 check-updates:
 	make check-updates
+
+lint: ./gradlew
+	./gradlew checkstyleMain
+
+build: ./gradlew
+		./gradlew lean build

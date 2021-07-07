@@ -7,6 +7,7 @@
 plugins {
     id 'com.github.ben-manes.versions' version '0.38.0'
     id 'application'
+    id 'checkstyle'
 }
 apply plugin: 'java'
 
@@ -23,6 +24,15 @@ jar {
 run {
     standardInput = System.in
 }
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.required = false
+        html.required = true
+        html.stylesheet resources.text.fromFile('config/checkstyle/checkstyle.xml')
+    }
+}
+
 
 
 group = 'hexlet.code'
