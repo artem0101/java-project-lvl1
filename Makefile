@@ -11,4 +11,4 @@ lint: ./gradlew
 	./gradlew checkstyleMain
 
 build: ./gradlew
-		./gradlew lean build
+		./gradlew clean build

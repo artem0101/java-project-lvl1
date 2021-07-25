@@ -11,6 +11,17 @@ plugins {
 }
 apply plugin: 'java'
 
+checkstyle {
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+
+checkstyleMain {
+    source ='src/main/test'
+}
+
 compileJava {
     options.release = 16
 }
@@ -27,13 +38,11 @@ run {
 
 tasks.withType(Checkstyle) {
     reports {
-        xml.required = false
-        html.required = true
-        html.stylesheet resources.text.fromFile('config/checkstyle/checkstyle.xml')
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile('config/xsl/checkstyle.xsl')
     }
 }
-
-
 
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
